@@ -1,6 +1,8 @@
 <template>
   <div>
-      <h1>Home page</h1>
+      <h1>Home page ciao</h1>
+      <p>deciditi
+      </p>
       <Posts />
   </div>
 </template>

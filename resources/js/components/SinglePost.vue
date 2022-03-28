@@ -3,7 +3,7 @@
         <h1>{{post.title}}</h1>
         <div v-html="post.content"></div>
         <p v-if="post.category"><strong>Categoria:</strong> {{post.category.name}}</p>
-        <div v-if="post.tags.length > 0">
+        <div v-if="post.tags.length() > 0">
             <strong>Tags</strong>
             <ul>
                 <li v-for="tag in post.tags" :key="tag.id">
@@ -20,15 +20,21 @@ export default {
     name: "SinglePost",
     data() {
         return{
-            post: {}
+            post: {},
         }
     },
     created() {
-        axios
-        .get(`/api/posts/${this.route.params.slug}`)
-        .then((response) => {
-            this.post = response.data;
-        })
+        this.getPost();
+    },
+    methods: {
+        getPost: function () {
+            axios
+                .get(`/api/posts/${this.$route.params.slug}`)
+                .then((response) => {
+                    this.post = response.data;
+                    console.log(this.post);
+                });
+        },
     }
 }
 </script>
