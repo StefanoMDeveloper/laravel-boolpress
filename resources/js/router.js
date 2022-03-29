@@ -6,6 +6,8 @@ Vue.use(VueRouter);
 import Home from "./pages/Home.vue"
 import About from "./pages/About.vue"
 import SinglePost from "./components/SinglePost.vue"
+import Categories from "./components/Categories.vue"
+import SingleCategory from "./components/SingleCategory.vue"
 
 const router = new VueRouter({
     mode: "history",
@@ -26,9 +28,20 @@ const router = new VueRouter({
             component: SinglePost
         },
         {
+            path: "/categories",
+            name: "categories",
+            component: Categories
+        },
+        {
+            path: "/categories/:slug",
+            name: "single-category",
+            component: SingleCategory
+        },
+        {
             path: "/*",
             name: "404-notFound",
-            component: PageNotFound
+            component: SinglePost
+            // PageNotFound
         },
     ]
 });
